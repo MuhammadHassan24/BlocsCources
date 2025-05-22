@@ -4,7 +4,7 @@ class SwitchState extends Equatable {
   final bool isEnabled;
   final double slider;
 
-  const SwitchState({this.isEnabled = false, this.slider = 0.1});
+  const SwitchState({this.isEnabled = false, this.slider = 0});
 
   SwitchState copyWith({bool? isEnabled, double? slider}) {
     return SwitchState(

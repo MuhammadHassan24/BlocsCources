@@ -17,16 +17,27 @@ class SwitchPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.max,
             children: [
-              Text(
-                "Switch is: ${context.watch<SwitchBloc>().state.isEnabled ? "Enabled " : "Disabled"}",
-              ),
               BlocBuilder<SwitchBloc, SwitchState>(
+                buildWhen:
+                    (previous, current) =>
+                        previous.isEnabled != current.isEnabled,
                 builder: (context, state) {
+                  print("Text Rebuilt");
+                  return Text(
+                    "Switch is: ${state.isEnabled ? "Enabled " : "Disabled"}",
+                  );
+                },
+              ),
+
+              BlocBuilder<SwitchBloc, SwitchState>(
+                buildWhen:
+                    (previous, current) =>
+                        previous.isEnabled != current.isEnabled,
+                builder: (context, state) {
+                  print("IsEnable");
                   return Switch(
                     value: state.isEnabled,
                     onChanged: (value) {
-                      print(state.isEnabled);
-                      print(value);
                       context.read<SwitchBloc>().add(EnableAndDisableSwitch());
                     },
                   );
@@ -36,7 +47,9 @@ class SwitchPage extends StatelessWidget {
           ),
           SizedBox(height: 50),
           BlocBuilder<SwitchBloc, SwitchState>(
+            buildWhen: (previous, current) => previous.slider != current.slider,
             builder: (context, state) {
+              print("container");
               return Container(
                 width: 280,
                 height: 150,
@@ -46,12 +59,12 @@ class SwitchPage extends StatelessWidget {
           ),
           SizedBox(height: 50),
           BlocBuilder<SwitchBloc, SwitchState>(
+            buildWhen: (previous, current) => previous.slider != current.slider,
             builder: (context, state) {
+              print("slider");
               return Slider(
                 value: state.slider,
                 onChanged: (value) {
-                  print(value);
-                  print(state.slider);
                   context.read<SwitchBloc>().add(
                     SliderEvent(sliderValue: value),
                   );
