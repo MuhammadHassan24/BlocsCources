@@ -214,23 +214,6 @@
             "outputFile": "com.example.bloc_counter_app-debug-26:/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Lenovi\\.gradle\\caches\\8.10.2\\transforms\\1118da8128d511195e65ca01fd969642\\transformed\\jetified-activity-1.8.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,97",
-                        "endColumns": "41,59",
-                        "endOffsets": "92,152"
-                    },
-                    "to": {
-                        "startLines": "122,141",
-                        "startColumns": "4,4",
-                        "startOffsets": "5922,6931",
-                        "endColumns": "41,59",
-                        "endOffsets": "5959,6986"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Lenovi\\.gradle\\caches\\8.10.2\\transforms\\d8f536ab661db8c110fa8f555d4045bd\\transformed\\jetified-savedstate-1.2.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -301,7 +284,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lenovi\\Desktop\\bloc_course\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\Lenovi\\.gradle\\caches\\8.10.2\\transforms\\f4945d9b5f034fedd21e910069a69270\\transformed\\jetified-activity-1.9.3\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,97",
+                        "endColumns": "41,59",
+                        "endOffsets": "92,152"
+                    },
+                    "to": {
+                        "startLines": "122,141",
+                        "startColumns": "4,4",
+                        "startOffsets": "5922,6931",
+                        "endColumns": "41,59",
+                        "endOffsets": "5959,6986"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Lenovi\\Desktop\\bloc_course\\bloc_counter_app\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -561,7 +561,7 @@
             "outputFile": "com.example.bloc_counter_app-debug-26:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Lenovi\\Desktop\\bloc_course\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\Lenovi\\Desktop\\bloc_course\\bloc_counter_app\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
