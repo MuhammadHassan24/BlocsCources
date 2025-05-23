@@ -1,6 +1,8 @@
 import 'package:bloc_counter_app/bloc/counter/counter_bloc.dart';
+import 'package:bloc_counter_app/bloc/imagepicker/imagepicker_bloc.dart';
 import 'package:bloc_counter_app/bloc/switch/switch_bloc.dart';
 import 'package:bloc_counter_app/ui/counter_page.dart';
+import 'package:bloc_counter_app/utils/image_picker_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => CounterBloc()),
         BlocProvider(create: (context) => SwitchBloc()),
+        BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils())),
       ],
       child: BlocProvider(
         create: (context) => SwitchBloc(),

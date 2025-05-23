@@ -11,68 +11,74 @@ class SwitchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Switch Page")),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              BlocBuilder<SwitchBloc, SwitchState>(
-                buildWhen:
-                    (previous, current) =>
-                        previous.isEnabled != current.isEnabled,
-                builder: (context, state) {
-                  print("Text Rebuilt");
-                  return Text(
-                    "Switch is: ${state.isEnabled ? "Enabled " : "Disabled"}",
-                  );
-                },
-              ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                BlocBuilder<SwitchBloc, SwitchState>(
+                  buildWhen:
+                      (previous, current) =>
+                          previous.isEnabled != current.isEnabled,
+                  builder: (context, state) {
+                    print("Text Rebuilt");
+                    return Text(
+                      "Switch is: ${state.isEnabled ? "Enabled " : "Disabled"}",
+                    );
+                  },
+                ),
 
-              BlocBuilder<SwitchBloc, SwitchState>(
-                buildWhen:
-                    (previous, current) =>
-                        previous.isEnabled != current.isEnabled,
-                builder: (context, state) {
-                  print("IsEnable");
-                  return Switch(
-                    value: state.isEnabled,
-                    onChanged: (value) {
-                      context.read<SwitchBloc>().add(EnableAndDisableSwitch());
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
-          SizedBox(height: 50),
-          BlocBuilder<SwitchBloc, SwitchState>(
-            buildWhen: (previous, current) => previous.slider != current.slider,
-            builder: (context, state) {
-              print("container");
-              return Container(
-                width: 280,
-                height: 150,
-                color: Colors.red.withValues(alpha: state.slider),
-              );
-            },
-          ),
-          SizedBox(height: 50),
-          BlocBuilder<SwitchBloc, SwitchState>(
-            buildWhen: (previous, current) => previous.slider != current.slider,
-            builder: (context, state) {
-              print("slider");
-              return Slider(
-                value: state.slider,
-                onChanged: (value) {
-                  context.read<SwitchBloc>().add(
-                    SliderEvent(sliderValue: value),
-                  );
-                },
-              );
-            },
-          ),
-        ],
+                BlocBuilder<SwitchBloc, SwitchState>(
+                  buildWhen:
+                      (previous, current) =>
+                          previous.isEnabled != current.isEnabled,
+                  builder: (context, state) {
+                    print("IsEnable");
+                    return Switch(
+                      value: state.isEnabled,
+                      onChanged: (value) {
+                        context.read<SwitchBloc>().add(
+                          EnableAndDisableSwitch(),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: 50),
+            BlocBuilder<SwitchBloc, SwitchState>(
+              buildWhen:
+                  (previous, current) => previous.slider != current.slider,
+              builder: (context, state) {
+                print("container");
+                return Container(
+                  width: 280,
+                  height: 150,
+                  color: Colors.red.withValues(alpha: state.slider),
+                );
+              },
+            ),
+            SizedBox(height: 50),
+            BlocBuilder<SwitchBloc, SwitchState>(
+              buildWhen:
+                  (previous, current) => previous.slider != current.slider,
+              builder: (context, state) {
+                print("slider");
+                return Slider(
+                  value: state.slider,
+                  onChanged: (value) {
+                    context.read<SwitchBloc>().add(
+                      SliderEvent(sliderValue: value),
+                    );
+                  },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

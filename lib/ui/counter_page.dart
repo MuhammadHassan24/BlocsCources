@@ -1,6 +1,7 @@
 import 'package:bloc_counter_app/bloc/counter/counter_bloc.dart';
 import 'package:bloc_counter_app/bloc/counter/counter_event.dart';
 import 'package:bloc_counter_app/bloc/counter/counter_state.dart';
+import 'package:bloc_counter_app/ui/image_picker_page.dart';
 import 'package:bloc_counter_app/ui/switch_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,50 +13,61 @@ class CounterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Counter Example")),
-      body: Column(
-        spacing: 20,
-        mainAxisAlignment: MainAxisAlignment.center,
-
-        children: [
-          Center(
-            child: BlocBuilder<CounterBloc, CounterState>(
-              builder: (context, state) {
-                return Text(
-                  state.counter.toString(),
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.w400),
-                );
-              },
-            ),
-          ),
-
-          Row(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            spacing: 20,
             mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 30,
+
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  context.read<CounterBloc>().add(IncrementCounter());
+              BlocBuilder<CounterBloc, CounterState>(
+                builder: (context, state) {
+                  return Text(
+                    state.counter.toString(),
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.w400),
+                  );
                 },
-                child: Icon(Icons.add),
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 30,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<CounterBloc>().add(IncrementCounter());
+                    },
+                    child: Icon(Icons.add),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<CounterBloc>().add(DecrementCounter());
+                    },
+                    child: Icon(Icons.remove),
+                  ),
+                ],
               ),
               ElevatedButton(
                 onPressed: () {
-                  context.read<CounterBloc>().add(DecrementCounter());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SwitchPage()),
+                  );
                 },
-                child: Icon(Icons.remove),
+                child: Text("Switch Example"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ImagePickerPage()),
+                  );
+                },
+                child: Text("ImagePicker Example"),
               ),
             ],
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SwitchPage()),
-              );
-            },
-            child: Text("Next"),
-          ),
-        ],
+        ),
       ),
     );
   }
